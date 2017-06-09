@@ -1,15 +1,19 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
-import { CadastroComponent } from './components/produtos/cadastro/cadastro.component';
-import { CompraComponent } from './components/produtos/compra/compra.component';
-import { ListarComponent } from './components/produtos/listar/listar.component';
+
+import { ProdutoListComponent } from './components/produtos/produto-list/produto-list.component';
+import { ProdutoNewComponent } from './components/produtos/produto-new/produto-new.component';
+
+import { CompraListComponent } from './components/compras/compra-list/compra-list.component';
+import { CompraNewComponent } from './components/compras/compra-new/compra-new.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'cadastro', component: CadastroComponent },
-  { path: 'compra', component: CompraComponent },
-  { path: 'listar', component: ListarComponent }
+    { path: '', component: HomeComponent },
+    { path: 'produtos', component: ProdutoListComponent },
+    { path: 'produtos/new', component: ProdutoNewComponent },
+    { path: 'compras', component: CompraListComponent },
+    { path: 'compras/new', component: CompraNewComponent },
 ];
 
 export const routing = RouterModule.forRoot(routes);

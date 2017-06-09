@@ -1,0 +1,9 @@
+<h1>Cadastro de produto</h1>
+
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <input placeholder="Nome" 
+    name="nome"
+    [(ngModel)]="produto.nome"
+    required>
+  <button>Salvar</button>
+</form>

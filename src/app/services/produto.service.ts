@@ -7,14 +7,25 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ProdutoService {
 
+  private produtosUrl = environment.api_url + '/produtos';
+
   constructor(private http: Http) { }
 
   getProdutos() {
-    var getProdutosUrl = environment.api_url + '/produtos';
-    return this.http.get(getProdutosUrl)
+    return this.http.get(this.produtosUrl)
             .map(res => res.json() );
-            // .map(res => this.toProdutos(res) );
   }
 
+  addProduto(produto){
+    let dados : any;
+      dados = { nome : produto.nome };
 
+    return this.http.post(this.produtosUrl, dados)
+      .map(res => res.json() );
+  }
+
+  deleteProduto(id){
+    let deleteProdutosUrl = this.produtosUrl + '/' + id ;
+    return this.http.delete(deleteProdutosUrl);
+  }
 }
