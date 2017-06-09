@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
 
 import { ProdutoService } from '../../../services/produto.service';
@@ -15,8 +14,7 @@ export class ProdutoNewComponent implements OnInit {
     "id" : null, 
     "nome": "" }
 
-  constructor(private router: Router,
-    private produtoService: ProdutoService) { }
+  constructor(private produtoService: ProdutoService) { }
 
   ngOnInit() {}
 
@@ -28,7 +26,6 @@ export class ProdutoNewComponent implements OnInit {
       .subscribe(res => { 
         alert("Produto adicionado");
         // console.log(res);
-        // this.router.navigate(['/listar']);
       },
         error => alert(error) 
       );

@@ -1,5 +1,19 @@
-# EstoqueSaeDigital
+# Pré requisitos:
 
+* [Angular CLI](https://github.com/angular/angular-cli)
+
+### Instalando pacotes
+```
+$ npm install
+```
+
+### Executando servidor de desenvolvimento
+```
+$ ng serve
+```
+Acesse no browser `http://localhost:4200/`
+
+# Estoque Sae Digital
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.4.
 
 ## Development server
