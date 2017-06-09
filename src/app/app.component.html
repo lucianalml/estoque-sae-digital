@@ -1,3 +1,10 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar>Estoque SAE Digital</md-toolbar>
+
+<ul>
+  <li><a [routerLink]="['/cadastro']">Cadastro de produtos</a></li>
+  <li><a [routerLink]="['/compra']">Compra de produtos</a></li>
+  <li><a [routerLink]="['/listar']">Listagem de produtos</a></li>
+</ul>
+
+
+<router-outlet></router-outlet>
