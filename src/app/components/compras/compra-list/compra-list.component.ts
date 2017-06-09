@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CompraService } from '../../../services/compra.service';
+
 @Component({
   selector: 'app-compra-list',
   templateUrl: './compra-list.component.html',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompraListComponent implements OnInit {
 
-  constructor() { }
+  compras: any[] = [];
+
+  constructor(private compraService: CompraService) { }
 
   ngOnInit() {
+    this.compraService.getCompras()
+      .subscribe(compras => {
+        this.compras = compras;
+      });
   }
-
 }

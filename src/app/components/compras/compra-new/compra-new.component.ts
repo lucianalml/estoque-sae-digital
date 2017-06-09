@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from "@angular/forms";
+
+import { ProdutoService } from '../../../services/produto.service';
+import { CompraService } from '../../../services/compra.service';
 
 @Component({
   selector: 'app-compra-new',
@@ -7,9 +11,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompraNewComponent implements OnInit {
 
-  constructor() { }
+  private produtos: any[] = [];
+
+  private compra = {
+    "produto": "",
+    "quantidade": 0,
+    "preco": 0 }
+
+  constructor(private compraService: CompraService,
+    private produtoService: ProdutoService) { }
 
   ngOnInit() {
+    this.produtoService.getProdutos()
+      .subscribe(produtos => this.produtos = produtos);
+  }
+
+  onSubmit(form: NgForm) {
+
+    console.log(form.value);
+
+    this.compra.produto = form.value.produto;
+    this.compra.quantidade = form.value.quantidade;
+    this.compra.preco = form.value.preco;
+
+    this.compraService.addCompra(this.compra)
+      .subscribe(res => { 
+        alert("Compra adicionada");
+        // console.log(res);
+      },
+        error => alert(error) 
+      );
+
   }
 
 }
