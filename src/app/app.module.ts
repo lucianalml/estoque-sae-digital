@@ -18,6 +18,8 @@ import { CadastroComponent } from './components/produtos/cadastro/cadastro.compo
 import { CompraComponent } from './components/produtos/compra/compra.component';
 import { ListarComponent } from './components/produtos/listar/listar.component';
 
+import { ProdutoService } from './services/produto.service';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { ListarComponent } from './components/produtos/listar/listar.component';
     MaterialModule,
     routing
   ],
-  providers: [],
+  providers: [ProdutoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
