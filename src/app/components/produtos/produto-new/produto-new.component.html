@@ -1,9 +1,18 @@
-<h1>Cadastro de produto</h1>
+<md-card>
+  <md-card-title>
+    Adicionar produto
+  </md-card-title>
 
-<form (ngSubmit)="onSubmit(f)" #f="ngForm">
-  <input placeholder="Nome" 
-    name="nome"
-    [(ngModel)]="produto.nome"
-    required>
-  <button>Salvar</button>
-</form>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+  <md-input-container>
+    <input mdInput placeholder="Nome" 
+      name="nome"
+      [(ngModel)]="produto.nome"
+      required>
+  </md-input-container>
+
+    <button md-mini-fab><md-icon>add</md-icon></button>
+  </form>
+
+</md-card>

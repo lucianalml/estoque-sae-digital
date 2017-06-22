@@ -24,6 +24,7 @@ import { CompraNewComponent } from './components/compras/compra-new/compra-new.c
 
 import { ProdutoService } from './services/produto.service';
 import { CompraService } from './services/compra.service';
+import { ProdutoComponent } from './components/produtos/produto/produto.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CompraService } from './services/compra.service';
     CompraListComponent,
     CompraNewComponent,
     ProdutoNewComponent,
-    ProdutoListComponent
+    ProdutoListComponent,
+    ProdutoComponent
   ],
   imports: [
     BrowserModule,
