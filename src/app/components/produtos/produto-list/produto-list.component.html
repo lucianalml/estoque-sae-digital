@@ -1,12 +1,17 @@
-<h1>Listagem de produtos</h1>
+<md-card>
+  <md-card-title>Produtos</md-card-title>
+  <md-card-content>
+    <md-nav-list>
+      <md-list-item *ngFor="let produto of produtos">
+        <h3 md-line> <b>Id:</b> {{produto.id}} </h3>
+        <p md-line>
+          <span> <b>Nome:</b> {{produto.nome}} </span>
+        </p>
+        <button md-icon-button (click)="delete(produto.id)">
+            <md-icon>delete</md-icon>
+        </button>
+      </md-list-item>
+    </md-nav-list>
 
-<ul>
-  <li *ngFor="let produto of produtos">
-    <b>{{ produto.id }}</b>: {{ produto.nome }}
-
-    <button (click)="delete(produto.id)">
-      Deletar
-    </button>
-
-  </li>
-</ul>
+  </md-card-content>
+</md-card>

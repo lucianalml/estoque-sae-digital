@@ -23,12 +23,15 @@ export class ProdutoListComponent implements OnInit {
 
   delete(id){
 
-    this.produtoService.deleteProduto(id)
-      .subscribe(res => { 
-        alert("Produto removido");
-      },
-        error => alert(error) 
-      );
+    if (confirm('Você tem certeza que deseja remover esse item?')) {
+      this.produtoService.deleteProduto(id)
+        .subscribe(res => { 
+          alert("Produto removido");
+        },
+          error => alert(error) 
+        );
+    }
+
   }
 
 }

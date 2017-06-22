@@ -9,11 +9,12 @@ import { CompraListComponent } from './components/compras/compra-list/compra-lis
 import { CompraNewComponent } from './components/compras/compra-new/compra-new.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'produtos', component: ProdutoListComponent },
-    { path: 'produtos/new', component: ProdutoNewComponent },
-    { path: 'compras', component: CompraListComponent },
-    { path: 'compras/new', component: CompraNewComponent },
+    { path: '', component: HomeComponent, children: [
+        { path: 'produtos', component: ProdutoListComponent },
+        { path: 'produtos/new', component: ProdutoNewComponent },
+        { path: 'compras', component: CompraListComponent },
+        { path: 'compras/new', component: CompraNewComponent },
+    ] },
 ];
 
 export const routing = RouterModule.forRoot(routes);
