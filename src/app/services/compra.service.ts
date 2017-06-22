@@ -30,22 +30,16 @@ export class CompraService {
 
   addCompra(compra: Compra) {
     this.compras.push(compra);
-    console.log("compra service");
-    console.log(this.compras);
+    this.storeData(compra);
   }
 
-  editCompra(oldCompra: Compra, newCompra: Compra) {
-    this.compras[this.compras.indexOf(oldCompra)] = newCompra;
+  storeData(compra: Compra) {
+    const body = JSON.stringify(compra);
+    return this.http.post(this.comprasUrl, body)
+      .map( (res: Response) => Compra.fromJSON(res.json()))
+      .subscribe();
   }
-
-  storeData() {
-    const body = JSON.stringify(this.compras);
-    const headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    return this.http.post(this.comprasUrl, body, { headers: headers});
-  }
-
+  
   fetchData() {
     return this.http.get(this.comprasUrl)
       .map((response: Response) => response.json().map(compra => Compra.fromJSON(compra)))

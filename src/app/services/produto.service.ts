@@ -29,31 +29,18 @@ export class ProdutoService {
 
   addProduto(produto: Produto) {
     this.produtos.push(produto);
-    console.log("produto service");
-    console.log(this.produtos);
+    this.storeData(produto);
   }
 
-  editProduto(oldProduto: Produto, newProduto: Produto) {
-    this.produtos[this.produtos.indexOf(oldProduto)] = newProduto;
-  }
-
-  storeData() {
-    const body = JSON.stringify(this.produtos);
-    const headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    return this.http.post(this.produtosUrl, body, { headers: headers});
-
-    // let dados : any;
-    //   dados = { nome : produto.nome };
-
-    // return this.http.post(this.produtosUrl, dados)
-    //   .map( (res: Response) => Produto.fromJSON(res.json()));
+  storeData(produto: Produto) {
+    const body = JSON.stringify(produto);
+    return this.http.post(this.produtosUrl, body)
+      .map( (res: Response) => Produto.fromJSON(res.json()))
+      .subscribe();
   }
 
   fetchData() {
     return this.http.get(this.produtosUrl)
-      // .map((response: Response) => response.json())
       .map((response: Response) => response.json().map(produto => Produto.fromJSON(produto)))
       .subscribe(
         (data: Produto[]) => {
@@ -62,23 +49,5 @@ export class ProdutoService {
         }
       );
   }
-  // getProdutos() {
-  //   return this.http.get(this.produtosUrl)
-  //     .map( (res: Response) => 
-  //       res.json().map(produto => Produto.fromJSON(produto))
-  //     );
-  // }
 
-  // addProduto(produto){
-  //   let dados : any;
-  //     dados = { nome : produto.nome };
-
-  //   return this.http.post(this.produtosUrl, dados)
-  //     .map( (res: Response) => Produto.fromJSON(res.json()));
-  // }
-
-  // deleteProduto(id){
-  //   let deleteProdutosUrl = this.produtosUrl + '/' + id ;
-  //   return this.http.delete(deleteProdutosUrl);
-  // }
 }
