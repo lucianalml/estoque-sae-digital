@@ -16,6 +16,7 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 
+import { ProdutoComponent } from './components/produtos/produto/produto.component';
 import { ProdutoListComponent } from './components/produtos/produto-list/produto-list.component';
 import { ProdutoNewComponent } from './components/produtos/produto-new/produto-new.component';
 
@@ -24,7 +25,6 @@ import { CompraNewComponent } from './components/compras/compra-new/compra-new.c
 
 import { ProdutoService } from './services/produto.service';
 import { CompraService } from './services/compra.service';
-import { ProdutoComponent } from './components/produtos/produto/produto.component';
 
 
 @NgModule({

@@ -3,6 +3,7 @@
     <span style="flex: 1 1 auto;"></span>
 
     <md-menu #appMenu="mdMenu" yPosition="above">
+        <button md-menu-item (click)="fetchData()"> Fetch data </button>
         <button md-menu-item (click)="showProdutos()"> Produtos </button>
         <button md-menu-item (click)="showCompras()"> Compras </button>
     </md-menu>

@@ -21,8 +21,7 @@ export class CompraNewComponent implements OnInit {
     private produtoService: ProdutoService) { }
 
   ngOnInit() {
-    this.produtoService.getProdutos()
-      .subscribe(produtos => this.produtos = produtos);
+    this.produtos = this.produtoService.getProdutos();
   }
 
   onSubmit(form: NgForm) {

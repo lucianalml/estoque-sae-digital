@@ -18,16 +18,9 @@ export class ProdutoNewComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-    this.produto.nome = form.value.nome;
-
-    this.produtoService.addProduto(this.produto)
-      .subscribe(res => { 
-        alert("Produto adicionado");
-        // console.log(res);
-      },
-        error => alert(error) 
-      );
-
+    const newProduto = form.value;
+    this.produtoService.addProduto(newProduto);
+    this.produto.nome = '';
   }
 
 }

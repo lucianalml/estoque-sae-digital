@@ -14,22 +14,17 @@ export class ProdutoListComponent implements OnInit {
   constructor(private produtoService: ProdutoService) { }
 
   ngOnInit() {
-    this.produtoService.getProdutos()
-      .subscribe(produtos => {
-        this.produtos = produtos;
-        // console.log(produtos);
-    });
+    this.produtos = this.produtoService.getProdutos();
+    this.produtoService.produtosChanged.subscribe(
+      (produtos: Produto[]) => this.produtos = produtos
+    );
+
   }
 
-  delete(id){
+  delete(idx){
 
-    if (confirm('Você tem certeza que deseja remover esse item?')) {
-      this.produtoService.deleteProduto(id)
-        .subscribe(res => { 
-          alert("Produto removido");
-        },
-          error => alert(error) 
-        );
+    if (confirm('Você tem certeza que deseja remover o item ' + this.produtos[idx].nome + '?')) {
+      this.produtoService.deleteProduto(idx);
     }
 
   }
