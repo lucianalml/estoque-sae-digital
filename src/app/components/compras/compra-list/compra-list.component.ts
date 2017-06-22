@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Compra } from '../compra';
 import { CompraService } from '../../../services/compra.service';
 
 @Component({
   selector: 'app-compra-list',
-  templateUrl: './compra-list.component.html',
-  styleUrls: ['./compra-list.component.css']
+  templateUrl: './compra-list.component.html'
 })
 export class CompraListComponent implements OnInit {
 
-  compras: any[] = [];
+  compras: Compra[] = [];
 
   constructor(private compraService: CompraService) { }
 
@@ -17,6 +17,7 @@ export class CompraListComponent implements OnInit {
     this.compraService.getCompras()
       .subscribe(compras => {
         this.compras = compras;
+        // console.log(compras);
       });
   }
 }

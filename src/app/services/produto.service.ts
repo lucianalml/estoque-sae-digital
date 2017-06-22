@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
 
+import { Produto } from '../components/produtos/produto';
+
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -13,7 +15,9 @@ export class ProdutoService {
 
   getProdutos() {
     return this.http.get(this.produtosUrl)
-            .map(res => res.json() );
+      .map( (res: Response) => 
+        res.json().map(produto => Produto.fromJSON(produto))
+      );
   }
 
   addProduto(produto){
@@ -21,7 +25,7 @@ export class ProdutoService {
       dados = { nome : produto.nome };
 
     return this.http.post(this.produtosUrl, dados)
-      .map(res => res.json() );
+      .map( (res: Response) => Produto.fromJSON(res.json()));
   }
 
   deleteProduto(id){

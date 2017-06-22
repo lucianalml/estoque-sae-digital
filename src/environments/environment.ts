@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://private-85ad8-querotrabalharnawpensar.apiary-mock.com/api'
+  api_url: 'https://private-85ad8-querotrabalharnawpensar.apiary-mock.com/api'
 };

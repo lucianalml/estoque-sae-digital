@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Produto } from '../produto';
 import { ProdutoService } from '../../../services/produto.service';
 
 @Component({
   selector: 'app-produto-list',
-  templateUrl: './produto-list.component.html',
-  styleUrls: ['./produto-list.component.css']
+  templateUrl: './produto-list.component.html'
 })
 export class ProdutoListComponent implements OnInit {
 
-  produtos: any[] = [];
+  produtos: Produto[] = [];
 
   constructor(private produtoService: ProdutoService) { }
 
@@ -17,6 +17,7 @@ export class ProdutoListComponent implements OnInit {
     this.produtoService.getProdutos()
       .subscribe(produtos => {
         this.produtos = produtos;
+        // console.log(produtos);
     });
   }
 

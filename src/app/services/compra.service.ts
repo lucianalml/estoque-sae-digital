@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
 
+import { Compra } from '../components/compras/compra';
+
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -12,7 +14,10 @@ export class CompraService {
 
   getCompras() {
     return this.http.get(this.comprasUrl)
-            .map(res => res.json() );
+      .map( (res: Response) => 
+        res.json().map(compra => Compra.fromJSON(compra))
+      );
+
   }
 
   addCompra(compra){
@@ -24,7 +29,7 @@ export class CompraService {
                 produto: compra.produto };
 
     return this.http.post(this.comprasUrl, dados)
-      .map(res => res.json() );
+      .map( (res: Response) => Compra.fromJSON(res.json()));
   }
 
   deleteCompra(id){
