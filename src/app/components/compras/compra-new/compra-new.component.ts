@@ -22,6 +22,11 @@ export class CompraNewComponent implements OnInit {
 
   ngOnInit() {
     this.produtos = this.produtoService.getProdutos();
+    this.produtoService.produtosChanged.subscribe(
+      (produtos: Produto[]) => 
+      { this.produtos = produtos;
+      }
+    );
   }
 
   onSubmit(form: NgForm) {
@@ -30,13 +35,9 @@ export class CompraNewComponent implements OnInit {
     this.compra.quantidade = form.value.quantidade;
     this.compra.preco = form.value.preco;
 
-    this.compraService.addCompra(this.compra)
-      .subscribe(res => { 
-        alert("Compra adicionada");
-        // console.log(res);
-      },
-        error => alert(error) 
-      );
+    const newCompra = new Compra(null,form.value.quantidade,form.value.preco,form.value.produto) ;
+    this.compraService.addCompra(newCompra);
+    this.compra = new Compra();
 
   }
 

@@ -4,14 +4,12 @@ import { HomeComponent } from './components/home/home.component';
 
 import { ProdutoComponent } from './components/produtos/produto/produto.component';
 
-import { CompraListComponent } from './components/compras/compra-list/compra-list.component';
-import { CompraNewComponent } from './components/compras/compra-new/compra-new.component';
+import { CompraComponent } from './components/compras/compra/compra.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, children: [
         { path: 'produtos', component: ProdutoComponent },
-        { path: 'compras', component: CompraListComponent },
-        { path: 'compras/new', component: CompraNewComponent },
+        { path: 'compras', component: CompraComponent }
     ] },
 ];
 

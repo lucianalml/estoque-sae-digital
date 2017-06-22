@@ -1,4 +1,32 @@
-<h1>Nova compra</h1>
+<md-card>
+  <md-card-title>
+    Adicionar compra
+  </md-card-title>
+
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+    <md-select placeholder="Produto" [(ngModel)]="compra.produto" name="produto">
+      <md-option *ngFor="let produto of produtos" [value]="produto.nome">
+        {{ produto.nome }}
+      </md-option>
+    </md-select>
+
+    <md-input-container>
+      <input mdInput placeholder="Quantidade" name="quantidade" min="1" [(ngModel)]="compra.quantidade">
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput placeholder="Preço" name="preco" min="1" step="1" [(ngModel)]="compra.preco">
+    </md-input-container>
+
+    <button md-mini-fab><md-icon>add</md-icon></button>
+  </form>
+
+</md-card>
+
+
+
+<!--<h1>Nova compra</h1>
 
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
@@ -22,4 +50,4 @@
 
   <button>Salvar</button>
 
-</form>
+</form>-->

@@ -14,10 +14,9 @@ export class CompraListComponent implements OnInit {
   constructor(private compraService: CompraService) { }
 
   ngOnInit() {
-    this.compraService.getCompras()
-      .subscribe(compras => {
-        this.compras = compras;
-        // console.log(compras);
-      });
+    this.compras = this.compraService.getCompras();
+    this.compraService.comprasChanged.subscribe(
+      (compras: Compra[]) => this.compras = compras
+    );
   }
 }

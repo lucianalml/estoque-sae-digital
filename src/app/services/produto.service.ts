@@ -53,7 +53,8 @@ export class ProdutoService {
 
   fetchData() {
     return this.http.get(this.produtosUrl)
-      .map((response: Response) => response.json())
+      // .map((response: Response) => response.json())
+      .map((response: Response) => response.json().map(produto => Produto.fromJSON(produto)))
       .subscribe(
         (data: Produto[]) => {
           this.produtos = data;

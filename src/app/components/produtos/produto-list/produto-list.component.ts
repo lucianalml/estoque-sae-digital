@@ -22,11 +22,9 @@ export class ProdutoListComponent implements OnInit {
   }
 
   delete(idx){
-
     if (confirm('Você tem certeza que deseja remover o item ' + this.produtos[idx].nome + '?')) {
       this.produtoService.deleteProduto(idx);
     }
-
   }
 
 }

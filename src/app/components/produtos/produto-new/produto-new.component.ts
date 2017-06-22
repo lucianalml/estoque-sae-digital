@@ -10,17 +10,16 @@ import { ProdutoService } from '../../../services/produto.service';
 })
 export class ProdutoNewComponent implements OnInit {
 
-  produto = new Produto();
+  nome: string;
 
   constructor(private produtoService: ProdutoService) { }
 
   ngOnInit() {}
 
   onSubmit(form: NgForm) {
-
-    const newProduto = form.value;
+    const newProduto = new Produto('',form.value.nome) ;
     this.produtoService.addProduto(newProduto);
-    this.produto.nome = '';
+    this.nome = '';
   }
 
 }
